@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Finance Dashboard</title>
+  <link rel="stylesheet" href="style.css">
+  <!-- Chart.js CDN -->
+  <script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+</head>
+<body>
+  <header>
+    <h1>Finance Dashboard</h1>
+    <select id="roleSelect">
+      <option value="viewer">Viewer</option>
+      <option value="admin">Admin</option>
+    </select>
+  </header>
+
+  <!-- Summary Cards -->
+  <section class="summary">
+    <div class="card">Total Balance: <span id="balance">₹0</span></div>
+    <div class="card">Income: <span id="income">₹0</span></div>
+    <div class="card">Expenses: <span id="expenses">₹0</span></div>
+  </section>
+
+  <!-- Charts -->
+  <section class="charts">
+    <canvas id="trendChart"></canvas>
+    <canvas id="categoryChart"></canvas>
+  </section>
+
+  <!-- Transactions -->
+  <section class="transactions">
+    <h2>Transactions</h2>
+    <input type="text" id="searchInput" placeholder="Search by category...">
+    <table>
+      <thead>
+        <tr>
+          <th>Date</th>
+          <th>Amount</th>
+          <th>Category</th>
+          <th>Type</th>
+        </tr>
+      </thead>
+      <tbody id="transactionTable"></tbody>
+    </table>
+  </section>
+
+  <!-- Add Transaction (Admin only) -->
+  <section id="addTransactionSection" style="display:none;">
+    <h2>Add Transaction</h2>
+    <form id="transactionForm">
+      <input type="date" id="date" required>
+      <input type="number" id="amount" placeholder="Amount" required>
+      <input type="text" id="category" placeholder="Category" required>
+      <select id="type">
+        <option value="income">Income</option>
+        <option value="expense">Expense</option>
+      </select>
+      <button type="submit">Add</button>
+    </form>
+  </section>
+
+  <!-- Insights -->
+  <section class="insights">
+    <h2>Insights</h2>
+    <p id="highestCategory"></p>
+    <p id="monthlyComparison"></p>
+  </section>
+
+  <script src="script.js"></script>
+</body>
+</html>
+
